@@ -1,11 +1,29 @@
 WARNING: Using incubator modules: jdk.incubator.vector
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-26/11/02 15:31:04 WARN Utils: Your hostname, ADITYAs-MacBook-Air-2.local, resolves to a loopback address: 127.0.0.1; using 192.168.1.31 instead (on interface en0)
-26/11/02 15:31:04 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+26/11/02 15:47:35 WARN Utils: Your hostname, ADITYAs-MacBook-Air-2.local, resolves to a loopback address: 127.0.0.1; using 192.168.1.31 instead (on interface en0)
+26/11/02 15:47:35 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-26/11/02 15:31:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/11/02 15:47:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 [revint] ingest_bronze ...
-[revint] ingest_bronze done in 0.44s
-[revint] no input changed: nothing to do (incremental no-op)
+[revint] ingest_bronze done in 9.68s
+[revint] silver ...
+[revint] silver done in 13.36s
+[revint] dq_gate_silver ...
+[revint] dq_gate_silver done in 2.49s
+[revint] text_features ...
+[revint] text_features done in 14.69s
+[revint] near_duplicates ...
+[revint] near_duplicates done in 17.55s
+[revint] bursts ...
+[revint] bursts done in 5.45s
+[revint] review_rings ...
+[revint] review_rings done in 18.47s
+[revint] scoring ...
+[revint] scoring done in 0.36s
+[revint] gold_star_schema_and_marts ...
+[revint] gold_star_schema_and_marts done in 22.35s
+[revint] dq_gate_gold ...
+[revint] dq_gate_gold done in 1.95s
+[revint] SUCCESS {'reviews': 694252, 'flagged': 2074, 'products': 112565, 'reviewers': 631986, 'products_grade_D_or_F': 53, 'products_inflated_ge_0_25_stars': 10} in 110.95s; DQ 23/23 passed

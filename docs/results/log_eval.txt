@@ -1,0 +1,170 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/02 16:19:30 WARN Utils: Your hostname, ADITYAs-MacBook-Air-2.local, resolves to a loopback address: 127.0.0.1; using 192.168.1.31 instead (on interface en0)
+26/11/02 16:19:30 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/11/02 16:19:30 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[revint] ingest_bronze ...
+[revint] ingest_bronze done in 14.94s
+[revint] silver ...
+[revint] silver done in 17.34s
+[revint] dq_gate_silver ...
+[revint] dq_gate_silver done in 2.71s
+[revint] text_features ...
+[revint] text_features done in 15.28s
+[revint] near_duplicates ...
+[revint] near_duplicates done in 22.79s
+[revint] bursts ...
+[revint] bursts done in 9.63s
+[revint] review_rings ...
+[revint] review_rings done in 28.58s
+[revint] scoring ...
+[revint] scoring done in 0.69s
+[revint] gold_star_schema_and_marts ...
+[revint] gold_star_schema_and_marts done in 23.72s
+[revint] dq_gate_gold ...
+[revint] dq_gate_gold done in 2.15s
+[revint] SUCCESS {'reviews': 698022, 'flagged': 5028, 'products': 112565, 'reviewers': 634581, 'products_grade_D_or_F': 163, 'products_inflated_ge_0_25_stars': 116} in 143.29s; DQ 23/23 passed
+[eval] seed=11 recall=0.8618 auc=0.9846960926831417
+[revint] ingest_bronze ...
+[revint] ingest_bronze done in 12.33s
+[revint] silver ...
+[revint] silver done in 9.83s
+[revint] dq_gate_silver ...
+[revint] dq_gate_silver done in 1.67s
+[revint] text_features ...
+[revint] text_features done in 14.57s
+[revint] near_duplicates ...
+[revint] near_duplicates done in 20.98s
+[revint] bursts ...
+[revint] bursts done in 5.23s
+[revint] review_rings ...
+[revint] review_rings done in 21.0s
+[revint] scoring ...
+[revint] scoring done in 0.35s
+[revint] gold_star_schema_and_marts ...
+[revint] gold_star_schema_and_marts done in 21.88s
+[revint] dq_gate_gold ...
+[revint] dq_gate_gold done in 2.03s
+[revint] SUCCESS {'reviews': 697713, 'flagged': 4769, 'products': 112565, 'reviewers': 634533, 'products_grade_D_or_F': 154, 'products_inflated_ge_0_25_stars': 90} in 111.13s; DQ 23/23 passed
+[eval] seed=22 recall=0.8491 auc=0.980164363288288
+[revint] ingest_bronze ...
+[revint] ingest_bronze done in 12.07s
+[revint] silver ...
+[revint] silver done in 10.71s
+[revint] dq_gate_silver ...
+[revint] dq_gate_silver done in 1.54s
+[revint] text_features ...
+[revint] text_features done in 16.37s
+[revint] near_duplicates ...
+[revint] near_duplicates done in 20.0s
+[revint] bursts ...
+[revint] bursts done in 4.43s
+[revint] review_rings ...
+[revint] review_rings done in 17.55s
+[revint] scoring ...
+[revint] scoring done in 0.26s
+[revint] gold_star_schema_and_marts ...
+[revint] gold_star_schema_and_marts done in 18.45s
+[revint] dq_gate_gold ...
+[revint] dq_gate_gold done in 1.8s
+[revint] SUCCESS {'reviews': 698092, 'flagged': 5073, 'products': 112565, 'reviewers': 634657, 'products_grade_D_or_F': 174, 'products_inflated_ge_0_25_stars': 112} in 104.38s; DQ 23/23 passed
+[eval] seed=33 recall=0.8581 auc=0.9800980858894658
+{
+  "recall_combined": {
+    "mean": 0.8563,
+    "std": 0.0053,
+    "n": 3
+  },
+  "precision_lower_bound": {
+    "mean": 0.5775,
+    "std": 0.0123,
+    "n": 3
+  },
+  "precision_on_target_products": {
+    "mean": 0.9915,
+    "std": 0.0025,
+    "n": 3
+  },
+  "organic_flag_rate": {
+    "mean": 0.003,
+    "std": 0.0,
+    "n": 3
+  },
+  "product_auc": {
+    "mean": 0.9817,
+    "std": 0.0022,
+    "n": 3
+  },
+  "product_precision_at_k": {
+    "mean": 0.7711,
+    "std": 0.0159,
+    "n": 3
+  },
+  "product_recall_at_k": {
+    "mean": 0.7711,
+    "std": 0.0159,
+    "n": 3
+  },
+  "rating_distortion_removed": {
+    "mean": 0.8627,
+    "std": 0.0045,
+    "n": 3
+  },
+  "recall_by_campaign_type": {
+    "TEMPLATE": {
+      "mean": 0.9965,
+      "std": 0.0038,
+      "n": 3
+    },
+    "REVIEW_BOMB": {
+      "mean": 0.9926,
+      "std": 0.0012,
+      "n": 3
+    },
+    "RING": {
+      "mean": 0.9928,
+      "std": 0.0052,
+      "n": 3
+    },
+    "BURST": {
+      "mean": 0.9724,
+      "std": 0.0072,
+      "n": 3
+    },
+    "SLOW_DRIP": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3
+    }
+  },
+  "recall_by_detector": {
+    "near_dup": {
+      "mean": 0.3021,
+      "std": 0.0223,
+      "n": 3
+    },
+    "copy_paste": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3
+    },
+    "ring": {
+      "mean": 0.2697,
+      "std": 0.0229,
+      "n": 3
+    },
+    "burst": {
+      "mean": 0.634,
+      "std": 0.0043,
+      "n": 3
+    },
+    "mismatch": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3
+    }
+  }
+}

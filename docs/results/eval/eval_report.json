@@ -1,0 +1,413 @@
+{
+  "category": "All_Beauty",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "campaigns_per_type": 20,
+  "aggregate": {
+    "recall_combined": {
+      "mean": 0.8563,
+      "std": 0.0053,
+      "n": 3
+    },
+    "precision_lower_bound": {
+      "mean": 0.5775,
+      "std": 0.0123,
+      "n": 3
+    },
+    "precision_on_target_products": {
+      "mean": 0.9915,
+      "std": 0.0025,
+      "n": 3
+    },
+    "organic_flag_rate": {
+      "mean": 0.003,
+      "std": 0.0,
+      "n": 3
+    },
+    "product_auc": {
+      "mean": 0.9817,
+      "std": 0.0022,
+      "n": 3
+    },
+    "product_precision_at_k": {
+      "mean": 0.7711,
+      "std": 0.0159,
+      "n": 3
+    },
+    "product_recall_at_k": {
+      "mean": 0.7711,
+      "std": 0.0159,
+      "n": 3
+    },
+    "rating_distortion_removed": {
+      "mean": 0.8627,
+      "std": 0.0045,
+      "n": 3
+    },
+    "recall_by_campaign_type": {
+      "TEMPLATE": {
+        "mean": 0.9965,
+        "std": 0.0038,
+        "n": 3
+      },
+      "REVIEW_BOMB": {
+        "mean": 0.9926,
+        "std": 0.0012,
+        "n": 3
+      },
+      "RING": {
+        "mean": 0.9928,
+        "std": 0.0052,
+        "n": 3
+      },
+      "BURST": {
+        "mean": 0.9724,
+        "std": 0.0072,
+        "n": 3
+      },
+      "SLOW_DRIP": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 3
+      }
+    },
+    "recall_by_detector": {
+      "near_dup": {
+        "mean": 0.3021,
+        "std": 0.0223,
+        "n": 3
+      },
+      "copy_paste": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 3
+      },
+      "ring": {
+        "mean": 0.2697,
+        "std": 0.0229,
+        "n": 3
+      },
+      "burst": {
+        "mean": 0.634,
+        "std": 0.0043,
+        "n": 3
+      },
+      "mismatch": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 3
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "category": "All_Beauty",
+      "labels": 3770,
+      "labels_matched_in_fact": 3770,
+      "review_level": {
+        "target_reviews": 3408,
+        "recall_combined": 0.8618,
+        "recall_by_detector": {
+          "near_dup": 0.277,
+          "copy_paste": 0.0,
+          "ring": 0.2884,
+          "burst": 0.6344,
+          "mismatch": 0.0
+        },
+        "recall_by_campaign_type": {
+          "BURST": {
+            "n": 894,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9709,
+            "mismatch": 0.0,
+            "combined_flag": 0.9709
+          },
+          "RING": {
+            "n": 993,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.9899,
+            "burst": 0.2699,
+            "mismatch": 0.0,
+            "combined_flag": 0.996
+          },
+          "REVIEW_BOMB": {
+            "n": 523,
+            "near_dup": 0.8509,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9541,
+            "mismatch": 0.0,
+            "combined_flag": 0.9943
+          },
+          "SLOW_DRIP": {
+            "n": 433,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.0,
+            "mismatch": 0.0,
+            "combined_flag": 0.0
+          },
+          "TEMPLATE": {
+            "n": 565,
+            "near_dup": 0.8832,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9327,
+            "mismatch": 0.0,
+            "combined_flag": 0.9912
+          }
+        },
+        "flagged_reviews": 5028,
+        "flagged_injected": 2938,
+        "precision_lower_bound": 0.5843277645186953,
+        "precision_on_target_products": 0.9942470389170897,
+        "organic_reviews": 694252,
+        "organic_flag_rate": 0.0030104342515397866
+      },
+      "product_level": {
+        "products_evaluated": 27235,
+        "target_products": 210,
+        "auc_integrity_score": 0.9846960926831417,
+        "precision_at_k": 0.780952380952381,
+        "recall_at_k": 0.780952380952381,
+        "recall_at_k_by_type": {
+          "BURST": 0.95,
+          "REVIEW_BOMB": 0.95,
+          "RING": 0.823076923076923,
+          "SLOW_DRIP": 0.0,
+          "TEMPLATE": 0.95
+        }
+      },
+      "rating_recovery": {
+        "target_products_with_organic_reviews": 210,
+        "mean_abs_error_raw_vs_organic": 0.5726599553020554,
+        "mean_abs_error_trusted_vs_organic": 0.07502596442286555,
+        "rating_distortion_removed": 0.8689868852741898
+      },
+      "seed": 11,
+      "injection": {
+        "seed": 11,
+        "category": "All_Beauty",
+        "injected_reviews": 3770,
+        "target_reviews": 3408,
+        "target_products": 210,
+        "campaigns": 100,
+        "labels": "data/eval/seed=11/raw/labels_All_Beauty.jsonl",
+        "targets": "data/eval/seed=11/raw/targets_All_Beauty.json",
+        "raw_dir": "data/eval/seed=11/raw"
+      },
+      "pipeline_seconds": 143.29
+    },
+    {
+      "category": "All_Beauty",
+      "labels": 3461,
+      "labels_matched_in_fact": 3461,
+      "review_level": {
+        "target_reviews": 3147,
+        "recall_combined": 0.8491,
+        "recall_by_detector": {
+          "near_dup": 0.3311,
+          "copy_paste": 0.0,
+          "ring": 0.2374,
+          "burst": 0.639,
+          "mismatch": 0.0
+        },
+        "recall_by_campaign_type": {
+          "BURST": {
+            "n": 760,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9645,
+            "mismatch": 0.0,
+            "combined_flag": 0.9645
+          },
+          "RING": {
+            "n": 761,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.9816,
+            "burst": 0.2037,
+            "mismatch": 0.0,
+            "combined_flag": 0.9855
+          },
+          "REVIEW_BOMB": {
+            "n": 605,
+            "near_dup": 0.8397,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9603,
+            "mismatch": 0.0,
+            "combined_flag": 0.9917
+          },
+          "SLOW_DRIP": {
+            "n": 431,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.0,
+            "mismatch": 0.0,
+            "combined_flag": 0.0
+          },
+          "TEMPLATE": {
+            "n": 590,
+            "near_dup": 0.9051,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9186,
+            "mismatch": 0.0,
+            "combined_flag": 0.9983
+          }
+        },
+        "flagged_reviews": 4769,
+        "flagged_injected": 2672,
+        "precision_lower_bound": 0.5602851750891172,
+        "precision_on_target_products": 0.9881656804733728,
+        "organic_reviews": 694252,
+        "organic_flag_rate": 0.0030205170456837
+      },
+      "product_level": {
+        "products_evaluated": 27233,
+        "target_products": 191,
+        "auc_integrity_score": 0.980164363288288,
+        "precision_at_k": 0.7486910994764397,
+        "recall_at_k": 0.7486910994764397,
+        "recall_at_k_by_type": {
+          "BURST": 1.0,
+          "REVIEW_BOMB": 0.9,
+          "RING": 0.7657657657657657,
+          "SLOW_DRIP": 0.0,
+          "TEMPLATE": 1.0
+        }
+      },
+      "rating_recovery": {
+        "target_products_with_organic_reviews": 191,
+        "mean_abs_error_raw_vs_organic": 0.5842868068913444,
+        "mean_abs_error_trusted_vs_organic": 0.0815116674423209,
+        "rating_distortion_removed": 0.8604937395797145
+      },
+      "seed": 22,
+      "injection": {
+        "seed": 22,
+        "category": "All_Beauty",
+        "injected_reviews": 3461,
+        "target_reviews": 3147,
+        "target_products": 191,
+        "campaigns": 100,
+        "labels": "data/eval/seed=22/raw/labels_All_Beauty.jsonl",
+        "targets": "data/eval/seed=22/raw/targets_All_Beauty.json",
+        "raw_dir": "data/eval/seed=22/raw"
+      },
+      "pipeline_seconds": 111.13
+    },
+    {
+      "category": "All_Beauty",
+      "labels": 3840,
+      "labels_matched_in_fact": 3840,
+      "review_level": {
+        "target_reviews": 3475,
+        "recall_combined": 0.8581,
+        "recall_by_detector": {
+          "near_dup": 0.2981,
+          "copy_paste": 0.0,
+          "ring": 0.2832,
+          "burst": 0.6285,
+          "mismatch": 0.0
+        },
+        "recall_by_campaign_type": {
+          "BURST": {
+            "n": 831,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9819,
+            "mismatch": 0.0,
+            "combined_flag": 0.9819
+          },
+          "RING": {
+            "n": 988,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.996,
+            "burst": 0.253,
+            "mismatch": 0.0,
+            "combined_flag": 0.997
+          },
+          "REVIEW_BOMB": {
+            "n": 620,
+            "near_dup": 0.8468,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9371,
+            "mismatch": 0.0,
+            "combined_flag": 0.9919
+          },
+          "SLOW_DRIP": {
+            "n": 470,
+            "near_dup": 0.0,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.0,
+            "mismatch": 0.0,
+            "combined_flag": 0.0
+          },
+          "TEMPLATE": {
+            "n": 566,
+            "near_dup": 0.9028,
+            "copy_paste": 0.0,
+            "ring": 0.0,
+            "burst": 0.9488,
+            "mismatch": 0.0,
+            "combined_flag": 1.0
+          }
+        },
+        "flagged_reviews": 5073,
+        "flagged_injected": 2983,
+        "precision_lower_bound": 0.5880149812734082,
+        "precision_on_target_products": 0.9920186232125041,
+        "organic_reviews": 694252,
+        "organic_flag_rate": 0.0030104342515397866
+      },
+      "product_level": {
+        "products_evaluated": 27232,
+        "target_products": 208,
+        "auc_integrity_score": 0.9800980858894658,
+        "precision_at_k": 0.7836538461538461,
+        "recall_at_k": 0.7836538461538461,
+        "recall_at_k_by_type": {
+          "BURST": 1.0,
+          "REVIEW_BOMB": 1.0,
+          "RING": 0.8125,
+          "SLOW_DRIP": 0.0,
+          "TEMPLATE": 0.95
+        }
+      },
+      "rating_recovery": {
+        "target_products_with_organic_reviews": 208,
+        "mean_abs_error_raw_vs_organic": 0.6179993252481203,
+        "mean_abs_error_trusted_vs_organic": 0.08744441006840434,
+        "rating_distortion_removed": 0.8585040363380716
+      },
+      "seed": 33,
+      "injection": {
+        "seed": 33,
+        "category": "All_Beauty",
+        "injected_reviews": 3840,
+        "target_reviews": 3475,
+        "target_products": 208,
+        "campaigns": 100,
+        "labels": "data/eval/seed=33/raw/labels_All_Beauty.jsonl",
+        "targets": "data/eval/seed=33/raw/targets_All_Beauty.json",
+        "raw_dir": "data/eval/seed=33/raw"
+      },
+      "pipeline_seconds": 104.38
+    }
+  ]
+}

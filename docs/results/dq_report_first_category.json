@@ -1,0 +1,203 @@
+{
+  "checks": [
+    {
+      "name": "All_Beauty.bronze_reconciles_source_lines",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "bronze": 701528,
+        "source_lines": 701528
+      },
+      "expected": "bronze == source lines"
+    },
+    {
+      "name": "All_Beauty.silver_reconciles_bronze",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "silver+quarantine+dupes": 701528,
+        "bronze": 701528
+      },
+      "expected": "equal"
+    },
+    {
+      "name": "All_Beauty.quarantine_rate",
+      "severity": "warn",
+      "passed": true,
+      "observed": 0.0,
+      "expected": "<= 1%"
+    },
+    {
+      "name": "silver.review_id_unique",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "rows": 694252,
+        "distinct": 694252
+      },
+      "expected": "equal"
+    },
+    {
+      "name": "silver.rating_domain",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 outside {1..5}"
+    },
+    {
+      "name": "silver.not_null_keys",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0"
+    },
+    {
+      "name": "silver.timestamp_range",
+      "severity": "error",
+      "passed": true,
+      "observed": "2000-11-01 04:24:18 .. 2023-09-09 00:39:36.666000",
+      "expected": ">= 1995 and <= now"
+    },
+    {
+      "name": "silver.product_metadata_coverage",
+      "severity": "warn",
+      "passed": true,
+      "observed": {
+        "products_without_meta": 0,
+        "reviewed_products": 112565
+      },
+      "expected": "<= 5% missing"
+    },
+    {
+      "name": "silver.products_unique",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 duplicate parent_asin"
+    },
+    {
+      "name": "gold.fact_rowcount_matches_silver",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "fact": 694252,
+        "silver": 694252
+      },
+      "expected": "equal"
+    },
+    {
+      "name": "gold.fk_fact_date",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 orphans"
+    },
+    {
+      "name": "gold.fk_fact_reviewer",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 orphans"
+    },
+    {
+      "name": "gold.fk_fact_product",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 orphans"
+    },
+    {
+      "name": "gold.dim_product_key_unique",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0"
+    },
+    {
+      "name": "gold.suspicion_in_unit_interval",
+      "severity": "error",
+      "passed": true,
+      "observed": [
+        0.0,
+        0.9325
+      ],
+      "expected": "[0, 1]"
+    },
+    {
+      "name": "gold.integrity_score_range",
+      "severity": "error",
+      "passed": true,
+      "observed": [
+        5.1,
+        100.0
+      ],
+      "expected": "[0, 100]"
+    },
+    {
+      "name": "gold.trusted_rating_range",
+      "severity": "error",
+      "passed": true,
+      "observed": [
+        1.4202907589509526,
+        4.907414502298399
+      ],
+      "expected": "[1, 5]"
+    },
+    {
+      "name": "gold.product_mart_reconciles_fact",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "mart": 694252,
+        "fact": 694252
+      },
+      "expected": "equal"
+    },
+    {
+      "name": "gold.monthly_mart_reconciles_fact",
+      "severity": "error",
+      "passed": true,
+      "observed": {
+        "mart": 694252,
+        "fact": 694252
+      },
+      "expected": "equal"
+    },
+    {
+      "name": "features.near_dup_edges_above_threshold",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 below threshold"
+    },
+    {
+      "name": "features.rings_min_size",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0 rings with < 2 members"
+    },
+    {
+      "name": "features.bursts_meet_thresholds",
+      "severity": "error",
+      "passed": true,
+      "observed": [
+        5.0,
+        8
+      ],
+      "expected": "z >= threshold, n >= min_count"
+    },
+    {
+      "name": "gold.flagged_reviews_have_reasons",
+      "severity": "error",
+      "passed": true,
+      "observed": 0,
+      "expected": "0"
+    }
+  ],
+  "n_checks": 23,
+  "n_passed": 23,
+  "n_failed_error": 0,
+  "n_failed_warn": 0,
+  "status": "PASS"
+}

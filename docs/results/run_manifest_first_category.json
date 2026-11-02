@@ -1,5 +1,5 @@
 {
-  "run_id": "20261102T153110Z",
+  "run_id": "20261102T154737Z",
   "tag": "first_category",
   "categories_requested": [
     "All_Beauty"
@@ -88,33 +88,310 @@
     }
   },
   "ingest": {
-    "changed": [],
-    "skipped": [
+    "changed": [
       "All_Beauty"
     ],
+    "skipped": [],
     "files": {
       "All_Beauty": {
+        "status": "ingested",
         "files": {
           "All_Beauty.jsonl": {
-            "bronze_rows": 701528,
-            "sha256": "36ca7c48440a8247b2dca0174d095238422b506a8a80c114dca722b7715f1c94",
             "size": 326611506,
+            "sha256": "36ca7c48440a8247b2dca0174d095238422b506a8a80c114dca722b7715f1c94",
+            "bronze_rows": 701528,
             "source_lines": 701528
           },
           "meta_All_Beauty.jsonl": {
-            "bronze_rows": 112590,
-            "sha256": "1cfbdf6d2ccf9c3ac52a4508b15f31f8f340508a245b65c3e3b5f461e06e97ef",
             "size": 212990142,
+            "sha256": "1cfbdf6d2ccf9c3ac52a4508b15f31f8f340508a245b65c3e3b5f461e06e97ef",
+            "bronze_rows": 112590,
             "source_lines": 112590
           }
-        },
-        "status": "ingested"
+        }
       }
     }
   },
-  "categories_processed": [],
-  "status": "NOOP",
+  "categories_processed": [
+    "All_Beauty"
+  ],
+  "status": "SUCCESS",
+  "silver": {
+    "All_Beauty": {
+      "bronze_rows": 701528,
+      "quarantined": 0,
+      "duplicates_removed": 7276,
+      "silver_rows": 694252,
+      "quarantine_reasons": {}
+    }
+  },
+  "products": {
+    "All_Beauty": {
+      "bronze_rows": 112590,
+      "silver_rows": 112590
+    }
+  },
+  "detectors": {
+    "near_dup": {
+      "lsh_eligible_reviews": 495664,
+      "lsh_candidate_edges": 8689,
+      "verified_edges": 684,
+      "naive_pairs": 122841152616,
+      "pair_reduction_factor": 14137547.774887789,
+      "cc_iterations": 2
+    },
+    "burst": {
+      "burst_eligible_products": 5966,
+      "burst_weeks": 212,
+      "burst_products": 144
+    },
+    "rings": {
+      "ring_skipped_buckets": 0,
+      "ring_edges": 30,
+      "ring_cc_iterations": 2,
+      "rings": 7,
+      "giant_components": 0
+    }
+  },
+  "summary": {
+    "reviews": 694252,
+    "flagged": 2074,
+    "products": 112565,
+    "reviewers": 631986,
+    "products_grade_D_or_F": 53,
+    "products_inflated_ge_0_25_stars": 10
+  },
+  "reason_code_counts": {
+    "LOCKSTEP_RING": 186,
+    "SAME_DAY_SPREE": 184,
+    "COPY_PASTE": 106,
+    "NEAR_DUP_CAMPAIGN": 7,
+    "INCENTIVIZED_DISCLOSURE": 2049,
+    "RATING_TEXT_MISMATCH": 10369,
+    "REVIEW_BURST": 2715,
+    "UNVERIFIED": 65796
+  },
+  "dq": {
+    "checks": [
+      {
+        "name": "All_Beauty.bronze_reconciles_source_lines",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "bronze": 701528,
+          "source_lines": 701528
+        },
+        "expected": "bronze == source lines"
+      },
+      {
+        "name": "All_Beauty.silver_reconciles_bronze",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "silver+quarantine+dupes": 701528,
+          "bronze": 701528
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "All_Beauty.quarantine_rate",
+        "severity": "warn",
+        "passed": true,
+        "observed": 0.0,
+        "expected": "<= 1%"
+      },
+      {
+        "name": "silver.review_id_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "rows": 694252,
+          "distinct": 694252
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "silver.rating_domain",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 outside {1..5}"
+      },
+      {
+        "name": "silver.not_null_keys",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      },
+      {
+        "name": "silver.timestamp_range",
+        "severity": "error",
+        "passed": true,
+        "observed": "2000-11-01 04:24:18 .. 2023-09-09 00:39:36.666000",
+        "expected": ">= 1995 and <= now"
+      },
+      {
+        "name": "silver.product_metadata_coverage",
+        "severity": "warn",
+        "passed": true,
+        "observed": {
+          "products_without_meta": 0,
+          "reviewed_products": 112565
+        },
+        "expected": "<= 5% missing"
+      },
+      {
+        "name": "silver.products_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 duplicate parent_asin"
+      },
+      {
+        "name": "gold.fact_rowcount_matches_silver",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "fact": 694252,
+          "silver": 694252
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "gold.fk_fact_date",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.fk_fact_reviewer",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.fk_fact_product",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.dim_product_key_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      },
+      {
+        "name": "gold.suspicion_in_unit_interval",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          0.0,
+          0.9325
+        ],
+        "expected": "[0, 1]"
+      },
+      {
+        "name": "gold.integrity_score_range",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          5.1,
+          100.0
+        ],
+        "expected": "[0, 100]"
+      },
+      {
+        "name": "gold.trusted_rating_range",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          1.4202907589509526,
+          4.907414502298399
+        ],
+        "expected": "[1, 5]"
+      },
+      {
+        "name": "gold.product_mart_reconciles_fact",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "mart": 694252,
+          "fact": 694252
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "gold.monthly_mart_reconciles_fact",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "mart": 694252,
+          "fact": 694252
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "features.near_dup_edges_above_threshold",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 below threshold"
+      },
+      {
+        "name": "features.rings_min_size",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 rings with < 2 members"
+      },
+      {
+        "name": "features.bursts_meet_thresholds",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          5.0,
+          8
+        ],
+        "expected": "z >= threshold, n >= min_count"
+      },
+      {
+        "name": "gold.flagged_reviews_have_reasons",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      }
+    ],
+    "n_checks": 23,
+    "n_passed": 23,
+    "n_failed_error": 0,
+    "n_failed_warn": 0,
+    "status": "PASS"
+  },
+  "storage_bytes": {
+    "raw_input": 539601648,
+    "bronze": 936421955,
+    "silver": 982622632,
+    "features": 69691234,
+    "gold": 73481149
+  },
   "stage_seconds": {
-    "ingest_bronze": 0.44
-  }
+    "ingest_bronze": 9.68,
+    "silver": 13.36,
+    "dq_gate_silver": 2.49,
+    "text_features": 14.69,
+    "near_duplicates": 17.55,
+    "bursts": 5.45,
+    "review_rings": 18.47,
+    "scoring": 0.36,
+    "gold_star_schema_and_marts": 22.35,
+    "dq_gate_gold": 1.95
+  },
+  "total_seconds": 110.95
 }

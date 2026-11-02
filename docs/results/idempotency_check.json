@@ -1,0 +1,99 @@
+{
+  "categories": [
+    "All_Beauty",
+    "Video_Games"
+  ],
+  "incremental_rerun_status": "NOOP",
+  "incremental_rerun_seconds": {
+    "ingest_bronze": 2.78
+  },
+  "forced_rerun_seconds": 640.98,
+  "tables_identical": {
+    "gold/fact_review": true,
+    "gold/dim_product": true,
+    "gold/mart_product_integrity": true,
+    "gold/mart_store_integrity": true,
+    "gold/mart_category_monthly": true,
+    "gold/mart_campaigns": true,
+    "features/near_dup_edges": true,
+    "features/bursts": true,
+    "features/rings": true
+  },
+  "before": {
+    "gold/fact_review": {
+      "rows": 5265219,
+      "hash_sum": "-5827073365253477999586"
+    },
+    "gold/dim_product": {
+      "rows": 249859,
+      "hash_sum": "1647161984376054394939"
+    },
+    "gold/mart_product_integrity": {
+      "rows": 249814,
+      "hash_sum": "1868821665094847904363"
+    },
+    "gold/mart_store_integrity": {
+      "rows": 49927,
+      "hash_sum": "-3667612019713808191695"
+    },
+    "gold/mart_category_monthly": {
+      "rows": 562,
+      "hash_sum": "72492608487896553647"
+    },
+    "gold/mart_campaigns": {
+      "rows": 7681,
+      "hash_sum": "-699966843829513108348"
+    },
+    "features/near_dup_edges": {
+      "rows": 35661,
+      "hash_sum": "216095671624402406751"
+    },
+    "features/bursts": {
+      "rows": 3594,
+      "hash_sum": "330578321749504358043"
+    },
+    "features/rings": {
+      "rows": 377,
+      "hash_sum": "53262307683595099984"
+    }
+  },
+  "after": {
+    "gold/fact_review": {
+      "rows": 5265219,
+      "hash_sum": "-5827073365253477999586"
+    },
+    "gold/dim_product": {
+      "rows": 249859,
+      "hash_sum": "1647161984376054394939"
+    },
+    "gold/mart_product_integrity": {
+      "rows": 249814,
+      "hash_sum": "1868821665094847904363"
+    },
+    "gold/mart_store_integrity": {
+      "rows": 49927,
+      "hash_sum": "-3667612019713808191695"
+    },
+    "gold/mart_category_monthly": {
+      "rows": 562,
+      "hash_sum": "72492608487896553647"
+    },
+    "gold/mart_campaigns": {
+      "rows": 7681,
+      "hash_sum": "-699966843829513108348"
+    },
+    "features/near_dup_edges": {
+      "rows": 35661,
+      "hash_sum": "216095671624402406751"
+    },
+    "features/bursts": {
+      "rows": 3594,
+      "hash_sum": "330578321749504358043"
+    },
+    "features/rings": {
+      "rows": 377,
+      "hash_sum": "53262307683595099984"
+    }
+  },
+  "idempotent": true
+}

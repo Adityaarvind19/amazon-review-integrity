@@ -1,0 +1,455 @@
+{
+  "run_id": "20261102T155832Z",
+  "tag": "main",
+  "categories_requested": [
+    "All_Beauty",
+    "Video_Games"
+  ],
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "cpu_count": 10,
+    "memory_gb": 16.0,
+    "python": "3.14.6",
+    "spark": "4.3.0",
+    "java": "17.0.21.0.3",
+    "spark_master": "local[*]",
+    "spark_default_parallelism": 10
+  },
+  "config": {
+    "paths": {
+      "raw_dir": "/Users/aditya/Projects/amazon-review-integrity/data/raw",
+      "lake_dir": "/Users/aditya/Projects/amazon-review-integrity/data/lake",
+      "state_dir": "/Users/aditya/Projects/amazon-review-integrity/data/state",
+      "results_dir": "/Users/aditya/Projects/amazon-review-integrity/docs/results"
+    },
+    "pipeline": {
+      "categories": [
+        "All_Beauty",
+        "Video_Games"
+      ]
+    },
+    "spark": {
+      "master": "local[*]",
+      "driver_memory": "10g",
+      "shuffle_partitions": 64,
+      "arrow_batch_size": 5000
+    },
+    "near_dup": {
+      "shingle_size": 3,
+      "num_perm": 64,
+      "bands": 16,
+      "min_shingles": 8,
+      "jaccard_threshold": 0.6,
+      "seed": 1729,
+      "min_users_campaign": 3,
+      "min_products_copy_paste": 3
+    },
+    "burst": {
+      "min_product_reviews": 20,
+      "baseline_weeks": 26,
+      "min_history_weeks": 4,
+      "z_threshold": 5.0,
+      "min_count": 8
+    },
+    "rings": {
+      "window_days": 3,
+      "min_shared_products": 3,
+      "min_lockstep_ratio": 0.5,
+      "max_bucket_size": 300,
+      "max_ring_size": 500
+    },
+    "signals": {
+      "mismatch_pos_rating": 4,
+      "mismatch_neg_sentiment": -0.35,
+      "mismatch_neg_rating": 2,
+      "mismatch_pos_sentiment": 0.5,
+      "min_polar_tokens": 2,
+      "same_day_reviews": 5
+    },
+    "scoring": {
+      "w_near_dup_campaign": 0.85,
+      "w_copy_paste": 0.5,
+      "w_ring": 0.8,
+      "w_burst": 0.55,
+      "w_mismatch": 0.3,
+      "w_incentivized": 0.4,
+      "w_unverified": 0.15,
+      "w_same_day": 0.3,
+      "flag_threshold": 0.5,
+      "prior_strength": 5
+    },
+    "eval": {
+      "seeds": [
+        11,
+        22,
+        33
+      ],
+      "campaigns_per_type": 20
+    }
+  },
+  "ingest": {
+    "changed": [
+      "All_Beauty",
+      "Video_Games"
+    ],
+    "skipped": [],
+    "files": {
+      "All_Beauty": {
+        "status": "ingested",
+        "files": {
+          "All_Beauty.jsonl": {
+            "size": 326611506,
+            "sha256": "36ca7c48440a8247b2dca0174d095238422b506a8a80c114dca722b7715f1c94",
+            "bronze_rows": 701528,
+            "source_lines": 701528
+          },
+          "meta_All_Beauty.jsonl": {
+            "size": 212990142,
+            "sha256": "1cfbdf6d2ccf9c3ac52a4508b15f31f8f340508a245b65c3e3b5f461e06e97ef",
+            "bronze_rows": 112590,
+            "source_lines": 112590
+          }
+        }
+      },
+      "Video_Games": {
+        "status": "ingested",
+        "files": {
+          "Video_Games.jsonl": {
+            "size": 2682948518,
+            "sha256": "7bde9e0a039bdb321e993bfe78a6c7d438fb1504b1ad152c0cb6a33a8b7cb26a",
+            "bronze_rows": 4624615,
+            "source_lines": 4624615
+          },
+          "meta_Video_Games.jsonl": {
+            "size": 437375785,
+            "sha256": "3ad94dfaa8dfed23c5f420aa9ddec415d00f2b8ec9f2d796f487b4b2c4d256de",
+            "bronze_rows": 137269,
+            "source_lines": 137269
+          }
+        }
+      }
+    }
+  },
+  "categories_processed": [
+    "All_Beauty",
+    "Video_Games"
+  ],
+  "status": "SUCCESS",
+  "silver": {
+    "Video_Games": {
+      "bronze_rows": 4624615,
+      "quarantined": 0,
+      "duplicates_removed": 53648,
+      "silver_rows": 4570967,
+      "quarantine_reasons": {}
+    },
+    "All_Beauty": {
+      "bronze_rows": 701528,
+      "quarantined": 0,
+      "duplicates_removed": 7276,
+      "silver_rows": 694252,
+      "quarantine_reasons": {}
+    }
+  },
+  "products": {
+    "All_Beauty": {
+      "bronze_rows": 112590,
+      "silver_rows": 112590
+    },
+    "Video_Games": {
+      "bronze_rows": 137269,
+      "silver_rows": 137269
+    }
+  },
+  "detectors": {
+    "near_dup": {
+      "lsh_eligible_reviews": 3854419,
+      "lsh_candidate_edges": 169591,
+      "verified_edges": 35661,
+      "naive_pairs": 7428270986571,
+      "pair_reduction_factor": 43801091.95989764,
+      "cc_iterations": 7
+    },
+    "burst": {
+      "burst_eligible_products": 33101,
+      "burst_weeks": 3594,
+      "burst_products": 1836
+    },
+    "rings": {
+      "ring_skipped_buckets": 59,
+      "ring_edges": 664,
+      "ring_cc_iterations": 5,
+      "rings": 377,
+      "giant_components": 0
+    }
+  },
+  "summary": {
+    "reviews": 5265219,
+    "flagged": 65507,
+    "products": 249814,
+    "reviewers": 3332339,
+    "products_grade_D_or_F": 627,
+    "products_inflated_ge_0_25_stars": 23
+  },
+  "reason_code_counts": {
+    "LOCKSTEP_RING": 3739,
+    "SAME_DAY_SPREE": 208016,
+    "COPY_PASTE": 18060,
+    "NEAR_DUP_CAMPAIGN": 31,
+    "INCENTIVIZED_DISCLOSURE": 4150,
+    "RATING_TEXT_MISMATCH": 110330,
+    "REVIEW_BURST": 92636,
+    "UNVERIFIED": 700143
+  },
+  "dq": {
+    "checks": [
+      {
+        "name": "All_Beauty.bronze_reconciles_source_lines",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "bronze": 701528,
+          "source_lines": 701528
+        },
+        "expected": "bronze == source lines"
+      },
+      {
+        "name": "All_Beauty.silver_reconciles_bronze",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "silver+quarantine+dupes": 701528,
+          "bronze": 701528
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "All_Beauty.quarantine_rate",
+        "severity": "warn",
+        "passed": true,
+        "observed": 0.0,
+        "expected": "<= 1%"
+      },
+      {
+        "name": "Video_Games.bronze_reconciles_source_lines",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "bronze": 4624615,
+          "source_lines": 4624615
+        },
+        "expected": "bronze == source lines"
+      },
+      {
+        "name": "Video_Games.silver_reconciles_bronze",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "silver+quarantine+dupes": 4624615,
+          "bronze": 4624615
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "Video_Games.quarantine_rate",
+        "severity": "warn",
+        "passed": true,
+        "observed": 0.0,
+        "expected": "<= 1%"
+      },
+      {
+        "name": "silver.review_id_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "rows": 5265219,
+          "distinct": 5265219
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "silver.rating_domain",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 outside {1..5}"
+      },
+      {
+        "name": "silver.not_null_keys",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      },
+      {
+        "name": "silver.timestamp_range",
+        "severity": "error",
+        "passed": true,
+        "observed": "1998-11-17 19:58:49 .. 2023-09-12 09:02:35.529000",
+        "expected": ">= 1995 and <= now"
+      },
+      {
+        "name": "silver.product_metadata_coverage",
+        "severity": "warn",
+        "passed": true,
+        "observed": {
+          "products_without_meta": 0,
+          "reviewed_products": 249814
+        },
+        "expected": "<= 5% missing"
+      },
+      {
+        "name": "silver.products_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 duplicate parent_asin"
+      },
+      {
+        "name": "gold.fact_rowcount_matches_silver",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "fact": 5265219,
+          "silver": 5265219
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "gold.fk_fact_date",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.fk_fact_reviewer",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.fk_fact_product",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 orphans"
+      },
+      {
+        "name": "gold.dim_product_key_unique",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      },
+      {
+        "name": "gold.suspicion_in_unit_interval",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          0.0,
+          0.973225
+        ],
+        "expected": "[0, 1]"
+      },
+      {
+        "name": "gold.integrity_score_range",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          2.55,
+          100.0
+        ],
+        "expected": "[0, 100]"
+      },
+      {
+        "name": "gold.trusted_rating_range",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          1.3802821421524114,
+          4.911342572779336
+        ],
+        "expected": "[1, 5]"
+      },
+      {
+        "name": "gold.product_mart_reconciles_fact",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "mart": 5265219,
+          "fact": 5265219
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "gold.monthly_mart_reconciles_fact",
+        "severity": "error",
+        "passed": true,
+        "observed": {
+          "mart": 5265219,
+          "fact": 5265219
+        },
+        "expected": "equal"
+      },
+      {
+        "name": "features.near_dup_edges_above_threshold",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 below threshold"
+      },
+      {
+        "name": "features.rings_min_size",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0 rings with < 2 members"
+      },
+      {
+        "name": "features.bursts_meet_thresholds",
+        "severity": "error",
+        "passed": true,
+        "observed": [
+          5.0,
+          8
+        ],
+        "expected": "z >= threshold, n >= min_count"
+      },
+      {
+        "name": "gold.flagged_reviews_have_reasons",
+        "severity": "error",
+        "passed": true,
+        "observed": 0,
+        "expected": "0"
+      }
+    ],
+    "n_checks": 26,
+    "n_passed": 26,
+    "n_failed_error": 0,
+    "n_failed_warn": 0,
+    "status": "PASS"
+  },
+  "storage_bytes": {
+    "raw_input": 3659925951,
+    "bronze": 936421955,
+    "silver": 995951103,
+    "features": 542733404,
+    "gold": 372170072
+  },
+  "stage_seconds": {
+    "ingest_bronze": 30.7,
+    "silver": 93.27,
+    "dq_gate_silver": 8.06,
+    "text_features": 97.01,
+    "near_duplicates": 134.96,
+    "bursts": 24.08,
+    "review_rings": 123.65,
+    "scoring": 0.39,
+    "gold_star_schema_and_marts": 54.64,
+    "dq_gate_gold": 4.31
+  },
+  "total_seconds": 577.61
+}
