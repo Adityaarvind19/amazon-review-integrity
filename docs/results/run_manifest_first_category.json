@@ -1,0 +1,120 @@
+{
+  "run_id": "20261102T153110Z",
+  "tag": "first_category",
+  "categories_requested": [
+    "All_Beauty"
+  ],
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "cpu_count": 10,
+    "memory_gb": 16.0,
+    "python": "3.14.6",
+    "spark": "4.3.0",
+    "java": "17.0.21.0.3",
+    "spark_master": "local[*]",
+    "spark_default_parallelism": 10
+  },
+  "config": {
+    "paths": {
+      "raw_dir": "/Users/aditya/Projects/amazon-review-integrity/data/raw",
+      "lake_dir": "/Users/aditya/Projects/amazon-review-integrity/data/lake",
+      "state_dir": "/Users/aditya/Projects/amazon-review-integrity/data/state",
+      "results_dir": "/Users/aditya/Projects/amazon-review-integrity/docs/results"
+    },
+    "pipeline": {
+      "categories": [
+        "All_Beauty",
+        "Video_Games"
+      ]
+    },
+    "spark": {
+      "master": "local[*]",
+      "driver_memory": "10g",
+      "shuffle_partitions": 64,
+      "arrow_batch_size": 5000
+    },
+    "near_dup": {
+      "shingle_size": 3,
+      "num_perm": 64,
+      "bands": 16,
+      "min_shingles": 8,
+      "jaccard_threshold": 0.6,
+      "seed": 1729,
+      "min_users_campaign": 3,
+      "min_products_copy_paste": 3
+    },
+    "burst": {
+      "min_product_reviews": 20,
+      "baseline_weeks": 26,
+      "min_history_weeks": 4,
+      "z_threshold": 5.0,
+      "min_count": 8
+    },
+    "rings": {
+      "window_days": 3,
+      "min_shared_products": 3,
+      "min_lockstep_ratio": 0.5,
+      "max_bucket_size": 300,
+      "max_ring_size": 500
+    },
+    "signals": {
+      "mismatch_pos_rating": 4,
+      "mismatch_neg_sentiment": -0.35,
+      "mismatch_neg_rating": 2,
+      "mismatch_pos_sentiment": 0.5,
+      "min_polar_tokens": 2,
+      "same_day_reviews": 5
+    },
+    "scoring": {
+      "w_near_dup_campaign": 0.85,
+      "w_copy_paste": 0.5,
+      "w_ring": 0.8,
+      "w_burst": 0.55,
+      "w_mismatch": 0.3,
+      "w_incentivized": 0.4,
+      "w_unverified": 0.15,
+      "w_same_day": 0.3,
+      "flag_threshold": 0.5,
+      "prior_strength": 5
+    },
+    "eval": {
+      "seeds": [
+        11,
+        22,
+        33
+      ],
+      "campaigns_per_type": 20
+    }
+  },
+  "ingest": {
+    "changed": [],
+    "skipped": [
+      "All_Beauty"
+    ],
+    "files": {
+      "All_Beauty": {
+        "files": {
+          "All_Beauty.jsonl": {
+            "bronze_rows": 701528,
+            "sha256": "36ca7c48440a8247b2dca0174d095238422b506a8a80c114dca722b7715f1c94",
+            "size": 326611506,
+            "source_lines": 701528
+          },
+          "meta_All_Beauty.jsonl": {
+            "bronze_rows": 112590,
+            "sha256": "1cfbdf6d2ccf9c3ac52a4508b15f31f8f340508a245b65c3e3b5f461e06e97ef",
+            "size": 212990142,
+            "source_lines": 112590
+          }
+        },
+        "status": "ingested"
+      }
+    }
+  },
+  "categories_processed": [],
+  "status": "NOOP",
+  "stage_seconds": {
+    "ingest_bronze": 0.44
+  }
+}

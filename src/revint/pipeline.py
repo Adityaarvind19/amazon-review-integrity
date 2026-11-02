@@ -18,7 +18,7 @@ from .config import lake
 from .detectors import burst as burst_det
 from .detectors import near_dup, text_signals
 from .detectors import rings as ring_det
-from .ingest import ingest
+from .ingest import ingest, mark_complete
 from .spark import get_spark, path_size_bytes, read_categories, read_categories_or_none, write_by_category
 
 
@@ -128,6 +128,7 @@ def run(cfg: dict, categories: list[str] | None = None, force: bool = False, pub
             _fail(cfg, manifest, rep, publish, tag)
 
     # summary covers every requested category (incremental runs only rebuild `todo`)
+    mark_complete(cfg["paths"]["state_dir"], todo)
     fact = read_categories(spark, lake(cfg, "gold", "fact_review"), categories)
     summary = fact.agg(F.count("*").alias("reviews"), F.sum(F.col("is_flagged").cast("int")).alias("flagged"),
                        F.countDistinct("product_key").alias("products"),

@@ -120,7 +120,7 @@ def build_products(spark: SparkSession, cfg: dict, categories: list[str]) -> dic
                         _price(F.col("price")).alias("price"),
                         F.col("average_rating").alias("listed_avg_rating"),
                         F.col("rating_number").alias("listed_rating_count"),
-                        F.element_at(F.col("categories"), 2).alias("sub_category"),
+                        F.try_element_at(F.col("categories"), F.lit(2)).alias("sub_category"),
                         F.coalesce(F.size("images"), F.lit(0)).alias("n_images")))
     write_by_category(spark, products, lake(cfg, "silver", "products"), categories, num_files=1)
     rows = {r["category"]: r["n"] for r in bronze.groupBy("category").agg(F.count("*").alias("n")).collect()}

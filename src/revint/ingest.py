@@ -75,7 +75,7 @@ def ingest(spark: SparkSession, cfg: dict, categories: list[str], force: bool = 
         fps = {p.name: {"size": p.stat().st_size, "sha256": sha256_file(p)} for p in (rev, meta)}
         prev = manifest.get(cat, {}).get("files", {})
         unchanged = all(prev.get(n, {}).get("sha256") == fp["sha256"] for n, fp in fps.items())
-        if unchanged and not force and manifest.get(cat, {}).get("status") == "ingested":
+        if unchanged and not force and manifest.get(cat, {}).get("status") == "complete":
             skipped.append(cat)
             files[cat] = manifest[cat]
             continue
@@ -88,3 +88,12 @@ def ingest(spark: SparkSession, cfg: dict, categories: list[str], force: bool = 
         changed.append(cat)
         files[cat] = manifest[cat]
     return {"changed": changed, "skipped": skipped, "files": files}
+
+
+def mark_complete(state_dir: str, categories: list[str]) -> None:
+    """Called by the pipeline only after the gold DQ gate passes."""
+    manifest = load_manifest(state_dir)
+    for c in categories:
+        if c in manifest:
+            manifest[c]["status"] = "complete"
+    save_manifest(state_dir, manifest)
