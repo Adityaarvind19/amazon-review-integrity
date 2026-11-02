@@ -3,6 +3,7 @@
 # Usage: scripts/run_real.sh            (categories: All_Beauty then Video_Games)
 set -euo pipefail
 cd "$(dirname "$0")/.."
+ulimit -n 10240
 FIRST=${FIRST:-All_Beauty}
 SECOND=${SECOND:-Video_Games}
 EVAL_CAT=${EVAL_CAT:-All_Beauty}

@@ -1,13 +1,13 @@
 {
-  "01_most_inflated_products": 316.8,
-  "02_worst_integrity_per_category": 20.5,
-  "03_incentivized_policy_change": 36.3,
-  "04_incentivized_by_year": 25.9,
-  "05_largest_campaigns": 3.6,
-  "06_reason_code_mix": 30.1,
-  "07_verified_vs_unverified": 44.3,
-  "08_store_integrity": 7.1,
-  "09_suspicious_reviewers": 73.8,
-  "10_monthly_trend": 3.8,
-  "11_grade_distribution": null
+  "01_most_inflated_products": 326.0,
+  "02_worst_integrity_per_category": 20.6,
+  "03_incentivized_policy_change": 36.7,
+  "04_incentivized_by_year": 25.7,
+  "05_largest_campaigns": 3.7,
+  "06_reason_code_mix": 27.7,
+  "07_verified_vs_unverified": 39.3,
+  "08_store_integrity": 6.9,
+  "09_suspicious_reviewers": 71.2,
+  "10_monthly_trend": 3.7,
+  "11_grade_distribution": 5.8
 }

@@ -9,7 +9,7 @@ SELECT * FROM (
 WHERE rk <= 5 ORDER BY category, rk;
 ```
 
-10 rows · 20.5 ms (DuckDB)
+10 rows · 20.6 ms (DuckDB)
 
 | category | parent_asin | title | n_reviews | integrity_score | flagged_share | rk |
 |---|---|---|---|---|---|---|

@@ -10,7 +10,7 @@ FROM fact_review f JOIN dim_date d USING (date_key)
 GROUP BY ALL ORDER BY f.category, post_ban;
 ```
 
-4 rows · 36.3 ms (DuckDB)
+4 rows · 36.7 ms (DuckDB)
 
 | category | post_ban | reviews | incentivized_pct | avg_rating_incentivized | avg_rating_other |
 |---|---|---|---|---|---|

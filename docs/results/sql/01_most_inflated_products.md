@@ -11,7 +11,7 @@ ORDER BY p.rating_inflation DESC, p.n_reviews DESC
 LIMIT 20;
 ```
 
-20 rows · 316.8 ms (DuckDB)
+20 rows · 326.0 ms (DuckDB)
 
 | category | parent_asin | title | store | n_reviews | n_flagged | raw_rating | trusted_rating | inflation | integrity_score | integrity_grade |
 |---|---|---|---|---|---|---|---|---|---|---|

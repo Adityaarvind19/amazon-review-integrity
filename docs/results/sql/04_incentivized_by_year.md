@@ -7,7 +7,7 @@ FROM fact_review f JOIN dim_date d USING (date_key)
 GROUP BY d.year ORDER BY d.year;
 ```
 
-26 rows · 25.9 ms (DuckDB)
+26 rows · 25.7 ms (DuckDB)
 
 | year | reviews | incentivized_pct | verified_pct |
 |---|---|---|---|

@@ -9,7 +9,7 @@ FROM mart_campaigns
 ORDER BY n_reviews DESC LIMIT 25;
 ```
 
-25 rows · 3.6 ms (DuckDB)
+25 rows · 3.7 ms (DuckDB)
 
 | category | campaign_type | subtype | campaign_id | n_reviews | n_reviewers | n_products | avg_rating | verified_share | first_day | last_day | example_parent_asin |
 |---|---|---|---|---|---|---|---|---|---|---|---|

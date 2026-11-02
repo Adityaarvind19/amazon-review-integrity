@@ -10,7 +10,7 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY category ORDER BY year_month DESC) <= 36
 ORDER BY category, year_month;
 ```
 
-72 rows · 3.8 ms (DuckDB)
+72 rows · 3.7 ms (DuckDB)
 
 | category | year_month | n_reviews | flagged_pct | raw_avg | trusted_avg | gap |
 |---|---|---|---|---|---|---|

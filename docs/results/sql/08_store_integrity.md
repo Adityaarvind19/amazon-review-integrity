@@ -9,7 +9,7 @@ FROM mart_store_integrity WHERE n_products >= 5
 ORDER BY weighted_integrity ASC, n_reviews DESC LIMIT 20;
 ```
 
-20 rows · 7.1 ms (DuckDB)
+20 rows · 6.9 ms (DuckDB)
 
 | category | store | n_products | n_reviews | flagged_pct | weighted_integrity | n_low_integrity_products | avg_inflation |
 |---|---|---|---|---|---|---|---|

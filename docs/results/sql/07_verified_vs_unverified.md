@@ -10,7 +10,7 @@ FROM fact_review f JOIN dim_date d USING (date_key)
 GROUP BY d.year ORDER BY d.year;
 ```
 
-26 rows · 44.3 ms (DuckDB)
+26 rows · 39.3 ms (DuckDB)
 
 | year | verified_avg | unverified_avg | flagged_pct |
 |---|---|---|---|

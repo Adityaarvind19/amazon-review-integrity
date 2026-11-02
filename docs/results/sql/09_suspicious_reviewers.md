@@ -9,7 +9,7 @@ FROM dim_reviewer r WHERE r.n_flagged > 0
 ORDER BY r.n_flagged DESC, r.n_reviews DESC LIMIT 20;
 ```
 
-20 rows · 73.8 ms (DuckDB)
+20 rows · 71.2 ms (DuckDB)
 
 | user_id | n_reviews | n_flagged | five_star_share | verified_share | max_reviews_one_day | is_ring_member | first_review | last_review |
 |---|---|---|---|---|---|---|---|---|

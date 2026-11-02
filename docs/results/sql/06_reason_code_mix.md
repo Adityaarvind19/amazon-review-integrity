@@ -7,7 +7,7 @@ FROM (SELECT unnest(reason_codes) AS code FROM fact_review WHERE is_flagged)
 GROUP BY code ORDER BY flagged_reviews DESC;
 ```
 
-8 rows · 30.1 ms (DuckDB)
+8 rows · 27.7 ms (DuckDB)
 
 | code | flagged_reviews | pct |
 |---|---|---|
