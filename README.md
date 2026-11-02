@@ -4,6 +4,10 @@ A PySpark lakehouse that detects **fake-review campaigns** in the public
 [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) dataset (McAuley Lab), scores every product's
 **review integrity**, and recomputes a **trust-adjusted star rating** with suspicious reviews removed.
 
+## 2-minute walkthrough
+
+ https://github.com/user-attachments/assets/a468ceb5-ab23-4cb3-b093-6a8ff8b330b7
+
 The dataset has no fraud labels, so the detectors are **evaluated by injecting seeded synthetic campaigns into the
 real data**, rerunning the unchanged pipeline, and measuring precision, recall and product-level AUC.
 
