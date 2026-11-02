@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "revint"
+version = "0.1.0"
+description = "Amazon review-integrity pipeline: fake-review campaign detection on Amazon Reviews 2023 with PySpark"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E731", "B905", "B023", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/revint/dashboard.py" = ["E501"]

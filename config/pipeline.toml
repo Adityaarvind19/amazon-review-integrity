@@ -1,0 +1,65 @@
+# Pipeline configuration. Paths are relative to the repo root unless absolute.
+# Override any path on the CLI (--raw-dir, --lake-dir, --state-dir, --results-dir).
+
+[paths]
+raw_dir = "data/raw"          # <Category>.jsonl.gz and meta_<Category>.jsonl.gz
+lake_dir = "data/lake"        # bronze / silver / features / gold
+state_dir = "data/state"      # ingest manifest, run manifests, checkpoints
+results_dir = "docs/results"  # committed evidence
+
+[pipeline]
+categories = ["All_Beauty", "Video_Games"]
+
+[spark]
+master = "local[*]"
+driver_memory = "10g"
+shuffle_partitions = 64
+arrow_batch_size = 5000
+
+[near_dup]                    # MinHash LSH on word 3-shingles of review text
+shingle_size = 3
+num_perm = 64
+bands = 16                    # 16 bands x 4 rows -> S-curve threshold ~0.50
+min_shingles = 8              # ignore short texts ("Great product, love it")
+jaccard_threshold = 0.6       # exact Jaccard verification of every candidate edge
+seed = 1729
+min_users_campaign = 3        # cluster with >= 3 distinct reviewers = templated campaign
+min_products_copy_paste = 3   # same reviewer, same text on >= 3 products
+
+[burst]                       # weekly counts per product, trailing robust baseline
+min_product_reviews = 20
+baseline_weeks = 26
+min_history_weeks = 4
+z_threshold = 5.0
+min_count = 8
+
+[rings]                       # lockstep co-review graph (CopyCatch-style)
+window_days = 3
+min_shared_products = 3
+min_lockstep_ratio = 0.5      # shared products / min(products reviewed by either user)
+max_bucket_size = 300         # product x 3-day buckets larger than this are skipped (and counted)
+max_ring_size = 500           # larger components are reported as 'giant' and not flagged
+
+[signals]
+mismatch_pos_rating = 4
+mismatch_neg_sentiment = -0.35
+mismatch_neg_rating = 2
+mismatch_pos_sentiment = 0.5
+min_polar_tokens = 2
+same_day_reviews = 5
+
+[scoring]                     # noisy-OR: suspicion = 1 - prod(1 - w_i * x_i)
+w_near_dup_campaign = 0.85
+w_copy_paste = 0.50
+w_ring = 0.80
+w_burst = 0.55
+w_mismatch = 0.30
+w_incentivized = 0.40
+w_unverified = 0.15
+w_same_day = 0.30
+flag_threshold = 0.5
+prior_strength = 5            # Bayesian shrinkage of trusted rating toward category mean
+
+[eval]
+seeds = [11, 22, 33]
+campaigns_per_type = 20

@@ -1,0 +1,15 @@
+# Same pipeline, small-machine/CI settings and sample paths.
+[paths]
+raw_dir = "data/sample/raw"
+lake_dir = "data/sample/lake"
+state_dir = "data/sample/state"
+results_dir = "data/sample/results"
+
+[pipeline]
+categories = ["All_Beauty"]
+
+[spark]
+master = "local[2]"
+driver_memory = "2g"
+shuffle_partitions = 4
+arrow_batch_size = 5000

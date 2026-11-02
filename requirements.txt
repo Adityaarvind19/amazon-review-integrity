@@ -1,0 +1,8 @@
+pyspark==4.3.0
+pyarrow==26.0.0
+pandas>=2.2,<3
+numpy>=2.0
+duckdb==2.0.0
+matplotlib>=3.9
+pytest>=8
+ruff>=0.6

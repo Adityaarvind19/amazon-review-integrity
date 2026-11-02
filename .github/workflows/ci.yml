@@ -1,0 +1,36 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          pip install -e .
+      - name: Lint
+        run: ruff check src tests
+      - name: Unit + end-to-end tests (Spark local, synthetic sample in the real raw format)
+        run: pytest -q
+      - name: Sample pipeline smoke run + DQ gate + SQL + dashboard
+        run: |
+          python -m revint.sample --out data/sample/raw --reviews 8000
+          python -m revint --config config/sample.toml run --publish
+          python -m revint --config config/sample.toml sql
+          python -m revint --config config/sample.toml dashboard
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sample-results
+          path: data/sample/results
